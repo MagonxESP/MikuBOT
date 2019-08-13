@@ -3,6 +3,7 @@ from MikuBOT import settings
 from pony.orm import db_session
 from MikuBOT.entities import Channel, OsuUser
 import hashlib
+from irc.client import SimpleIRCClient
 
 
 class MikuBOT(Bot):
@@ -44,4 +45,10 @@ class MikuBOT(Bot):
 
         channel = self._get_channel(channel_id)
         await ctx.send('Use !token ' + channel.token + ' on osu! to output /np command on discord')
+
+
+class MikuBOTIRC(SimpleIRCClient):
+
+    def __init__(self):
+        super().__init__()
 
