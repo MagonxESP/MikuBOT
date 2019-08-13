@@ -13,3 +13,9 @@ MYSQL_PASSWORD = getenv('MYSQL_PASSWORD')
 
 # Discord bot token
 DISCORD_TOKEN = getenv('DISCORD_TOKEN')
+
+# IRC OSU!
+IRC_HOST = getenv('IRC_HOST')
+IRC_USERNAME = getenv('IRC_USERNAME')
+IRC_PASSWORD = getenv('IRC_PASSWORD')
+IRC_PORT = int(getenv('IRC_PORT'))
