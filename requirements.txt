@@ -1,0 +1,5 @@
+irc
+discord.py
+pony
+python-dotenv
+pymysql
