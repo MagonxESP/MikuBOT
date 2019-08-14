@@ -18,10 +18,10 @@ Required environment variables
 
 MYSQL database connection
 ```sh
-MYSQL_HOST=mysql
-MYSQL_USER=root
-MYSQL_PASSWORD=root
-MYSQL_DATABASE=mikubot
+MYSQL_HOST="mysql"
+MYSQL_USER="root"
+MYSQL_PASSWORD="root"
+MYSQL_DATABASE="mikubot"
 ```
 
 Discord bot token
@@ -33,9 +33,9 @@ OSU! irc connection
 - Get your irc password [here](https://osu.ppy.sh/p/irc)
 - More info about osu! irc server [here](https://osu.ppy.sh/help/wiki/Internet_Relay_Chat)
 ```sh
-IRC_HOST=irc.ppy.sh
-IRC_USERNAME=Your_osu_account_username
-IRC_PASSWORD=Your_irc_osu_account_password
+IRC_HOST="irc.ppy.sh"
+IRC_USERNAME="Your_osu_account_username"
+IRC_PASSWORD="Your_irc_osu_account_password"
 IRC_PORT=6667
 ```
 
