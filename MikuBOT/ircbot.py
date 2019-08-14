@@ -24,6 +24,7 @@ class MikuBOTIRC(SimpleIRCClient):
         super().__init__()
 
     def on_welcome(self, connection, event):
+        connection.privmsg(event.target, "MikuBOT is started. " + event.arguments[0])
         print(event.arguments[0])
 
     def on_privmsg(self, connection: ServerConnection, event: Event):
