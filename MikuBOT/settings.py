@@ -19,3 +19,10 @@ IRC_HOST = getenv('IRC_HOST')
 IRC_USERNAME = getenv('IRC_USERNAME')
 IRC_PASSWORD = getenv('IRC_PASSWORD')
 IRC_PORT = int(getenv('IRC_PORT'))
+
+# IRC secret variable. Not recommended to use!
+IRC_NICKNAME = getenv('IRC_NICKNAME')
+
+# if not set by default get IRC_USERNAME value
+if IRC_NICKNAME is None:
+    IRC_NICKNAME = getenv('IRC_USERNAME')

@@ -11,7 +11,7 @@ MikuBOT.IRC_BOT.add_command(IRCCommandHandler(MikuBOTIRCCommands.token))
 MikuBOT.IRC_BOT.connect(
     MikuBOT.settings.IRC_HOST,
     MikuBOT.settings.IRC_PORT,
-    MikuBOT.settings.IRC_USERNAME,
+    MikuBOT.settings.IRC_NICKNAME,
     username=MikuBOT.settings.IRC_USERNAME,
     password=MikuBOT.settings.IRC_PASSWORD
 )
