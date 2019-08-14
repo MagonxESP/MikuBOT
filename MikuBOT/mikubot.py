@@ -1,9 +1,11 @@
 from discord.ext.commands import Bot, Command
+from discord import Embed
 from MikuBOT import settings
 from pony.orm import db_session
 from MikuBOT.entities import Channel, OsuUser
 import hashlib
-from irc.client import SimpleIRCClient
+import re
+import asyncio
 
 
 class MikuBOT(Bot):
@@ -27,12 +29,6 @@ class MikuBOT(Bot):
             return Channel.exists(token=token)
 
     @db_session
-    def add_user_to_channel(self, token, user_id):
-        channel = Channel.get(token=token)
-        player = OsuUser(name=user_id)
-        channel.osu_users.add(player)
-
-    @db_session
     def _get_channel(self, channel_id):
         return Channel.get(channel_id=channel_id)
 
@@ -46,9 +42,21 @@ class MikuBOT(Bot):
         channel = self._get_channel(channel_id)
         await ctx.send('Use !token ' + channel.token + ' on osu! to output /np command on discord')
 
+    @db_session
+    def send_np(self, user, beatmap_link: str):
+        osu_user = OsuUser.get(name=user)
+        groups = re.match(r'.*\[(.*://.*/[0-9]+) (.*)\]', beatmap_link)
 
-class MikuBOTIRC(SimpleIRCClient):
+        if groups:
+            link = groups.group(1)
+            song = groups.group(2)
+            markdown = "{} is listening to **{}** {}".format(user, song, link)
 
-    def __init__(self):
-        super().__init__()
+            for channel in osu_user.channels:
+                channel_id = int(channel.channel_id)
+                discord_channel = self.get_channel(channel_id)
+
+                if discord_channel is not None:
+                    asyncio.run_coroutine_threadsafe(discord_channel.send(markdown), self.loop)
+
 
