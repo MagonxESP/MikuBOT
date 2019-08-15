@@ -50,8 +50,10 @@ class MikuBOTIRC(SimpleIRCClient):
     """
     def on_action(self, connection, event):
         response = event.arguments[0]
+        MikuBOT.logger.info("Get IRC action => {}".format(response))
 
         if re.search('(.*)(is listening to|is watching|is playing|is editing)(.*)', response):
+            MikuBOT.logger.info('/np command detected, attempting to send to discord!')
             MikuBOT.DISCORD_BOT.send_np(event.source.nick, response)
 
     def add_command(self, command):

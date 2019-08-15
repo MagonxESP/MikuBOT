@@ -1,8 +1,8 @@
 from discord.ext.commands import Bot, Command
-from discord import Embed
 from MikuBOT import settings
 from pony.orm import db_session
 from MikuBOT.entities import Channel, OsuUser
+from MikuBOT import logger
 import hashlib
 import re
 import asyncio
@@ -51,12 +51,17 @@ class MikuBOT(Bot):
             link = groups.group(1)
             song = groups.group(2)
             markdown = "{} is listening to **{}** {}".format(user, song, link)
+            logger.info("Matches found. Markdown generated: " + markdown)
 
             for channel in osu_user.channels:
                 channel_id = int(channel.channel_id)
                 discord_channel = self.get_channel(channel_id)
+                logger.info("Sending /np to channel_id {}".format(channel_id))
 
                 if discord_channel is not None:
                     asyncio.run_coroutine_threadsafe(discord_channel.send(markdown), self.loop)
+                    logger.info("OK Sending /np to channel_id {}".format(channel_id))
+                else:
+                    logger.error("channel_id {} does not exists, aborting".format(channel_id))
 
 
