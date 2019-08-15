@@ -3,6 +3,8 @@ Another Discord OSU! Bot
 
 Use this bot for send to discord the output of /np command on OSU!
 
+Require Python >= 3.5
+
 ## Usage
 1. Add discord bot to your discord server. [Click here to add Miku bot](https://discordapp.com/api/oauth2/authorize?client_id=610542848089128960&permissions=522304&scope=bot)
 2. Execute ````;active```` command on text channel.
@@ -18,10 +20,11 @@ Required environment variables
 
 MYSQL database connection
 ```sh
-MYSQL_HOST=mysql
-MYSQL_USER=root
-MYSQL_PASSWORD=root
-MYSQL_DATABASE=mikubot
+MYSQL_HOST="mysql"
+MYSQL_USER="root"
+MYSQL_PASSWORD="root"
+MYSQL_DATABASE="mikubot"
+MYSQL_PORT=3306
 ```
 
 Discord bot token
@@ -33,9 +36,9 @@ OSU! irc connection
 - Get your irc password [here](https://osu.ppy.sh/p/irc)
 - More info about osu! irc server [here](https://osu.ppy.sh/help/wiki/Internet_Relay_Chat)
 ```sh
-IRC_HOST=irc.ppy.sh
-IRC_USERNAME=Your_osu_account_username
-IRC_PASSWORD=Your_irc_osu_account_password
+IRC_HOST="irc.ppy.sh"
+IRC_USERNAME="Your_osu_account_username"
+IRC_PASSWORD="Your_irc_osu_account_password"
 IRC_PORT=6667
 ```
 

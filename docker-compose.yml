@@ -3,10 +3,12 @@ version: "3"
 services:
   mikubot:
     build: .
-    links:
-      - mysql
     depends_on:
       - mysql
+    links:
+      - mysql
+    networks:
+      - default
 
   mysql:
     image: mysql/mysql-server:5.7
@@ -15,3 +17,8 @@ services:
       MYSQL_USER: 'root'
       MYSQL_PASSWORD: 'root'
       MYSQL_ROOT_PASSWORD: 'root'
+    networks:
+      - default
+
+networks:
+  default:
