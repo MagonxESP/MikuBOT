@@ -42,7 +42,6 @@ IRC_PASSWORD="Your_irc_osu_account_password"
 IRC_PORT=6667
 ```
 
-
 Create .env file inside MikuBOT package for environment variables
 ```sh
 touch MikuBOT/.env
@@ -56,3 +55,27 @@ Force build of docker-compose containers
 docker-compose up --build -d
 ```
 
+### Deploy without docker-compose
+
+NOTE: Requires python >= 3.5
+
+Create a new virtualenv
+```sh
+python -m venv venv
+```
+
+Activate the virtualenv and install dependencies
+```sh
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+Exit of the virtualenv console
+```sh
+deactivate
+```
+
+Execute the run script
+```sh
+sh mikubot.sh &
+```
