@@ -1,4 +1,4 @@
-from irc.client import SimpleIRCClient, ServerConnection, Event
+from irc.client import SimpleIRCClient
 from pony.orm import db_session
 from MikuBOT.entities import Channel, OsuUser
 import MikuBOT
@@ -27,7 +27,7 @@ class MikuBOTIRC(SimpleIRCClient):
         connection.privmsg(event.target, "MikuBOT is started. " + event.arguments[0])
         print(event.arguments[0])
 
-    def on_privmsg(self, connection: ServerConnection, event: Event):
+    def on_privmsg(self, connection, event):
         message = event.arguments[0]
         command_match = re.match(self.command_prefix + '([a-z]+)( (.*))?', message)
 
@@ -48,7 +48,7 @@ class MikuBOTIRC(SimpleIRCClient):
     def on_pubnotice(self, connection, event):
         print(event)
     """
-    def on_action(self, connection: ServerConnection, event: Event):
+    def on_action(self, connection, event):
         response = event.arguments[0]
 
         if re.search('(.*)(is listening to|is watching|is playing|is editing)(.*)', response):

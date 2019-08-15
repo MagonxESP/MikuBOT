@@ -27,7 +27,8 @@ try:
         host=MikuBOT.settings.MYSQL_HOST,
         user=MikuBOT.settings.MYSQL_USER,
         passwd=MikuBOT.settings.MYSQL_PASSWORD,
-        db=MikuBOT.settings.MYSQL_DATABASE
+        db=MikuBOT.settings.MYSQL_DATABASE,
+        port=MikuBOT.settings.MYSQL_PORT
     )
 
     MikuBOT.entities.db.generate_mapping(create_tables=True)

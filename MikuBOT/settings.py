@@ -10,6 +10,7 @@ MYSQL_DATABASE = getenv('MYSQL_DATABASE')
 MYSQL_USER = getenv('MYSQL_USER')
 MYSQL_HOST = getenv('MYSQL_HOST')
 MYSQL_PASSWORD = getenv('MYSQL_PASSWORD')
+MYSQL_PORT = int(getenv('MYSQL_PORT'))
 
 # Discord bot token
 DISCORD_TOKEN = getenv('DISCORD_TOKEN')
