@@ -3,6 +3,7 @@ import MikuBOT.entities
 import MikuBOT
 from threading import Thread
 from MikuBOT.ircbot import MikuBOTIRCCommands, IRCCommandHandler
+import pony.orm.dbapiprovider
 
 # add command handlers to irc bot
 MikuBOT.IRC_BOT.add_command(IRCCommandHandler(MikuBOTIRCCommands.token))
@@ -19,14 +20,18 @@ MikuBOT.IRC_BOT.connect(
 irc_thread = Thread(target=MikuBOT.IRC_BOT.start)
 irc_thread.start()
 
-# Connect to mysql database and start discord bot
-MikuBOT.entities.db.bind(
-    provider='mysql',
-    host=MikuBOT.settings.MYSQL_HOST,
-    user=MikuBOT.settings.MYSQL_USER,
-    passwd=MikuBOT.settings.MYSQL_PASSWORD,
-    db=MikuBOT.settings.MYSQL_DATABASE
-)
+try:
+    # Connect to mysql database and start discord bot
+    MikuBOT.entities.db.bind(
+        provider='mysql',
+        host=MikuBOT.settings.MYSQL_HOST,
+        user=MikuBOT.settings.MYSQL_USER,
+        passwd=MikuBOT.settings.MYSQL_PASSWORD,
+        db=MikuBOT.settings.MYSQL_DATABASE
+    )
 
-MikuBOT.entities.db.generate_mapping(create_tables=True)
-MikuBOT.DISCORD_BOT.run()
+    MikuBOT.entities.db.generate_mapping(create_tables=True)
+    MikuBOT.DISCORD_BOT.run()
+except pony.orm.dbapiprovider.OperationalError as e:
+    MikuBOT.logger.critical(e)
+    print(MikuBOT.logger.handlers)
