@@ -57,7 +57,7 @@ docker-compose up --build -d
 
 ### Deploy without docker-compose
 
-NOTE: Requires python >= 3.5
+NOTE: Requires python >= 3.5 and mysql-server 5.7
 
 Create a new virtualenv
 ```sh
