@@ -8,10 +8,12 @@ Require Python >= 3.5
 ## Usage
 1. Add discord bot to your discord server. [Click here to add Miku bot](https://discordapp.com/api/oauth2/authorize?client_id=610542848089128960&permissions=522304&scope=bot)
 2. Execute ````;active```` command on text channel.
-3. Go to osu!, find the bot and execute the given command of discord bot.
+3. Go to osu!, find the bot (me MagonxESP) and execute the given command of discord bot.
 4. And thats all, now you can share /np command to discord.
 
 NOTE: On step 3, the osu!bot is an osu!account that you configured to connect to osu! irc server, it can be configured by environment variables you can find on Deploy section.
+
+NOTE 2: Now i have this bot deployed and running on a raspberry pi. The discord bot and the used osu!account have different names, can be confusing. Remember that miku on discord is the discord bot and MagonxESP it's me and osu!bot.
 
 ## Deploy
 This bot run under two docker containers configured on ````docker-compose.yml````
