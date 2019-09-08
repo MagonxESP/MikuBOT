@@ -3,6 +3,7 @@ version: "3"
 services:
   mikubot:
     build: .
+    restart: always
     depends_on:
       - mysql
     links:
@@ -12,6 +13,7 @@ services:
 
   mysql:
     image: mysql/mysql-server:5.7
+    restart: always
     environment:
       MYSQL_DATABASE: 'mikubot'
       MYSQL_USER: 'root'
