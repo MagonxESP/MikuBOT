@@ -2,6 +2,10 @@ from MikuBOT.mikubot import MikuBOT
 from MikuBOT.ircbot import MikuBOTIRC
 from os.path import join, dirname
 import logging
+import setproctitle
+
+# set process title
+setproctitle.setproctitle('MikuBOT')
 
 # configure and get logger
 logging.basicConfig(
