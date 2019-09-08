@@ -29,7 +29,7 @@ class MikuBOTIRC(SimpleIRCClient):
 
     def on_privmsg(self, connection, event):
         message = event.arguments[0]
-	MikuBOT.logger.info("Get private message => {}".format(message))
+        MikuBOT.logger.info("Get private message => {}".format(message))
         command_match = re.match(self.command_prefix + '([a-z]+)( (.*))?', message)
 
         if command_match:
@@ -37,7 +37,10 @@ class MikuBOTIRC(SimpleIRCClient):
                 command_name = command_match.group(1)
 
                 if command.name == command_name:
-                    MikuBOT.logger.info("Command \"{}\" detected and executed".format(command.name))
+                    MikuBOT.logger.info("Command \"{}{}\" detected and executed".format(
+                        self.command_prefix,
+                        command.name
+                    ))
                     command.execute(connection, event, message.split(' ')[1:])
 
     """
