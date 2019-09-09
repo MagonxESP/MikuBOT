@@ -23,13 +23,9 @@ class MikuBOTIRC(SimpleIRCClient):
     def __init__(self):
         super().__init__()
 
-    def on_welcome(self, connection, event):
-        connection.privmsg(event.target, "MikuBOT is started. " + event.arguments[0])
-        print(event.arguments[0])
-
-    def on_privmsg(self, connection, event):
+    def command_interpreter(self, connection, event):
         message = event.arguments[0]
-        MikuBOT.logger.info("Get private message => {}".format(message))
+        MikuBOT.logger.info("Get message => {}".format(message))
         command_match = re.match(self.command_prefix + '([a-z]+)( (.*))?', message)
 
         if command_match:
@@ -43,11 +39,18 @@ class MikuBOTIRC(SimpleIRCClient):
                     ))
                     command.execute(connection, event, message.split(' ')[1:])
 
-    """
-    def on_privnotice(self, connection, event):
-        print(event)
+    def on_welcome(self, connection, event):
+        connection.privmsg(event.target, "MikuBOT is started. " + event.arguments[0])
+        print(event.arguments[0])
+
+    def on_privmsg(self, connection, event):
+        self.command_interpreter(connection, event)
 
     def on_pubmsg(self, connection, event):
+        self.command_interpreter(connection, event)
+
+    """
+    def on_privnotice(self, connection, event):
         print(event)
 
     def on_pubnotice(self, connection, event):
