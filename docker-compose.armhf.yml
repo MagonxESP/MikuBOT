@@ -11,6 +11,8 @@ services:
 
   mysql:
     image: lsioarmhf/mariadb:latest
+    ports:
+      - 5306:3306
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: 'root'
