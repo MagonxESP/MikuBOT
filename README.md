@@ -73,7 +73,7 @@ CREATE DATABASE mikubot CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci';
 GRANT ALL PRIVILEGES ON mikubot.* TO 'mikubot'@'%' IDENTIFIED BY 'password';
 ```
 
-NOTE: Using the armhf docker-compose method required update your ````MikuBOT/.env```` file with the created database and user.
+NOTE: Using the armhf docker-compose method requires update your ````MikuBOT/.env```` file with the created database and user.
 
 ### Deploy without docker-compose
 
