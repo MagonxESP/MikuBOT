@@ -10,7 +10,7 @@ services:
       - mysql
 
   mysql:
-    image: mysql/mysql-server:5.7
+    image: mariadb:latest
     restart: always
     environment:
       MYSQL_DATABASE: 'mikubot'

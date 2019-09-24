@@ -55,6 +55,26 @@ Force build of docker-compose containers
 docker-compose up --build -d
 ```
 
+### Using docker on armhf based systems
+
+Start containers using ````docker-compose.armhf.yml```` file
+```sh
+docker-compose -f docker-compose.armhf.yml up -d
+```
+
+Login to mysql cli
+```sh
+docker-compose exec mysql mysql -u root -p
+```
+
+Create database and user
+```sql
+CREATE DATABASE mikubot CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci';
+GRANT ALL PRIVILEGES ON mikubot.* TO 'mikubot'@'%' IDENTIFIED BY 'password';
+```
+
+NOTE: Using the armhf docker-compose method requires update your ````MikuBOT/.env```` file with the created database and user.
+
 ### Deploy without docker-compose
 
 NOTE: Requires python >= 3.5 and mysql-server 5.7
