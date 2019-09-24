@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  mikubot:
+    build: .
+    restart: always
+    depends_on:
+      - mysql
+    links:
+      - mysql
+
+  mysql:
+    image: lsioarmhf/mariadb:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+
