@@ -12,7 +12,7 @@ services:
     - ./logs:/app/logs
 
   mysql:
-    image: mariadb:latest
+    image: mysql/mysql-server:5.7
     restart: always
     environment:
       MYSQL_DATABASE: 'mikubot'
