@@ -8,6 +8,8 @@ services:
       - mysql
     links:
       - mysql
+    volumes:
+    - ./logs:/app/logs
 
   mysql:
     image: mariadb:latest
